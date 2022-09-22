@@ -1,0 +1,78 @@
+######################################################################################
+## CONFIGURATION FILE
+## SYNTHETIC SAMPLES
+######################################################################################
+
+## ----Project name ------------------------------------------------------------------
+project: "SYNTH_01"
+
+## ----Generation of synthetic samples -----------------------------------------------
+# Sample names and sample size (x1000):
+sample_list: {
+    "01": 1, 
+    "02": 2.5,
+    "03": 5,
+    "04": 10,
+    "05": 25,
+    "06": 50,
+    "07": 100,
+    "08": 250,
+    "09": 500,
+    "10": 1000,
+    "11": 2500,
+    "12": 5000
+}
+
+# Replicate names and seeds
+replicate_list: {
+    "a": 23, 
+    "b": 42
+}
+
+# MFI values for NEG and POS cells
+neg_mean: 50
+neg_sd: 1000
+pos_mean: 5000
+pos_sd: 1000
+
+# Phenotypes model
+phenotypes: "input/phenotypes_model_01.xlsx"
+
+## ----Plotting fcs ----------------------------------------------------------------
+plot_fcs_snakefile: "model_01.snakefile"
+
+## ----Reduction of dimensionality methods -----------------------------------------
+tsne: TRUE            # TRUE or FALSE
+umap: TRUE            # TRUE or FALSE
+
+## ----Benchmarking parameters -----------------------------------------------------
+synthetic: "yes"      # "yes" or "no"
+
+normalization: "no"   # "yes" or "no"
+
+threshold: 0.05
+
+## ----Clustering methods ----------------------------------------------------------
+flowsom_max: TRUE     # TRUE or FALSE, run flowSOM indicating the number of populations as maximum number of clusters
+
+flowsom_exact: TRUE   # TRUE or FALSE, run flowSOM indicating exact number of clusters
+flowsom_clusters: [11, 15, 20]      # List with exact number of clusters to be used with flowsom_exact
+
+# TRUE or FALSE:
+
+phenograph: TRUE      
+flowmeans: TRUE      
+flowpeaks: TRUE       
+depeche: TRUE         
+
+tsne_phenograph: TRUE      
+tsne_flowmeans: TRUE 
+tsne_flowpeaks: TRUE
+tsne_depeche: TRUE
+tsne_clusterx: TRUE
+
+umap_phenograph: TRUE      
+umap_flowmeans: TRUE 
+umap_flowpeaks: TRUE
+umap_depeche: TRUE
+umap_clusterx: TRUE
